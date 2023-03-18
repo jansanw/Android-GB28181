@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+
+  wvp:
+    image: 648540858/wvp_pro
+    restart: always
+    environment:
+      TZ: Asia/Shanghai
+      WVP_IP: "192.168.2.23"
+#    volumes:
+#      - ./wvp/media:/opt/media
+#      - ./wvp/wvp/logs:/opt/wvp/logs
+#      - ./wvp/assist/logs:/opt/assist/logs
+    ports:
+      - "8121:80"
+      - "8124:554/tcp"
+      - "8124:554/udp"
+      - "8125:1935"
+      - "8126:5060/tcp"
+      - "8126:5060/udp"
+      - "8128:18080"
+      - "8127:18081"
+      - "30000-30500:30000-30500/tcp"
+      - "30000-30500:30000-30500/udp"
+#  80	zlm的http端口	tcp
+#  554	zlm的rtsp端口，非必须	tcp&udp
+#  1935	zlm的rtmp端口，非必须	tcp
+#  5060	28181sip信令端口	tcp&udp
+#  6379	redis端口，非必须	tcp
+#  18080	wvp的http端口	tcp
+#  18081	录像管理服务端口，非必须	tcp
+#  30000-30500	zlm接收视频推流端口	tcp&udp
